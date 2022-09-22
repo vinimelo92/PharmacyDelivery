@@ -1,0 +1,181 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Pharmacy",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/pharmacy/{id}": {
+      "get": {
+        "tags": [
+          "Pharmacy"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Pharmacy"
+            }
+          }
+        }
+      }
+    },
+    "/api/pharmacy/pharmacies": {
+      "get": {
+        "tags": [
+          "Pharmacy"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pharmacy"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pharmacy/create": {
+      "post": {
+        "tags": [
+          "Pharmacy"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RequestBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/pharmacy/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Pharmacy"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/pharmacy/update/{id}": {
+      "put": {
+        "tags": [
+          "Pharmacy"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RequestBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Pharmacy": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "createdAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 255,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imagePath": {
+          "maxLength": 255,
+          "minLength": 0,
+          "type": "string"
+        },
+        "zipCode": {
+          "maxLength": 255,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "RequestBody": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "imagePath": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
